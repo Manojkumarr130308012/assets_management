@@ -1,0 +1,78 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Sidebar Menu
+    style.
+      /* Define styles for the sidebar menu */
+      #sidebarMenu {
+        background-color: #f8f9fa; /* Light background color */
+      }
+
+      #sidebarMenu ul.nav {
+        padding: 0;
+      }
+
+      #sidebarMenu ul.nav li.nav-item {
+        list-style-type: none; /* Remove bullet points */
+      }
+
+      #sidebarMenu ul.nav li.nav-item a.nav-link {
+        color: #333; /* Text color */
+        padding: 10px 20px; /* Padding around links */
+        display: block;
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s; /* Smooth transition for background color */
+      }
+
+      #sidebarMenu ul.nav li.nav-item a.nav-link:hover {
+        background-color: #e9ecef; /* Light background color on hover */
+      }
+
+      #sidebarMenu ul.nav li.nav-item a.nav-link.active {
+        background-color: #007bff; /* Active link background color */
+        color: #fff; /* Active link text color */
+      }
+
+      /* Sticky positioning for the sidebar */
+      .position-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+      }
+
+      /* Height adjustment for the sidebar */
+      .pt-3 {
+        padding-top: 1rem; /* Adjust as needed */
+      }
+
+      /* Limit the height of the sidebar */
+      .h-50 {
+        height: 50%; /* Adjust as needed */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+      }
+  body
+    nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar
+      .position-sticky.pt-3(style="height: 200vh;")
+        ul.nav.flex-column.justify-content-evenly.h-50
+          li.nav-item
+            a.nav-link(href="asset/dashboard", class=(currentPage === 'dashboard' ? 'active' : '')) Dashboard
+          li.nav-item
+            a.nav-link(href="/employee", class=(currentPage === 'employee' ? 'active' : '')) Employee
+          li.nav-item
+            a.nav-link(href="/branch", class=(currentPage === 'branch' ? 'active' : '')) Branch
+          li.nav-item
+            a.nav-link(href="/assetsCategory", class=(currentPage === 'assetsCategory' ? 'active' : '')) AssetsCategory
+          li.nav-item
+            a.nav-link(href="/asset", class=(currentPage === 'assets' ? 'active' : '')) Assets
+          li.nav-item
+            a.nav-link(href="/asset/stocks/", class=(currentPage === 'stockView' ? 'active' : '')) Stock View
+          li.nav-item
+            a.nav-link(href="/asset/issued_asset/", class=(currentPage === 'issueAsset' ? 'active' : '')) Issue Asset
+          li.nav-item
+            a.nav-link(href="/asset/return_asset/", class=(currentPage === 'returnAsset' ? 'active' : '')) Return Asset
+          li.nav-item
+            a.nav-link(href="/asset/obsolete_asset/", class=(currentPage === 'reports' ? 'active' : '')) Reports
+          li.nav-item
+            a.nav-link(href="/asset/stocks_history/", class=(currentPage === 'stocksHistory' ? 'active' : '')) Stocks History

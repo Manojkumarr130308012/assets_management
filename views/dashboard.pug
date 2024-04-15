@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  h2 Dashboard
+  p Welcome to the dashboard!
+
+  // Add your dashboard content here
+  .row
+    .col-md-6
+      .card.mb-3
+        .card-header
+          h5.card-title Employees
+        .card-body
+          h1=  data.employeeCount
+    .col-md-6
+      .card.mb-3
+        .card-header
+          h5.card-title Total Assets
+        .card-body
+          h1=  data.asstsCount
+  .row        
+    .col-md-6
+      .card.mb-3
+        .card-header
+          h5.card-title Avaliable 
+        .card-body
+          h1=  data.stockCount
+    .col-md-6
+      .card.mb-3
+        .card-header
+          h5.card-title Issued
+        .card-body
+          h1=  data.issuedCount   
+  .row        
+    .col-md-6
+      .card.mb-3
+        .card-header
+          h5.card-title Return 
+        .card-body
+          h1=  data.returnCount
+    .col-md-6
+      .card.mb-3
+        .card-header
+          h5.card-title Obsolete
+        .card-body
+          h1=  data.obsoleteCount      

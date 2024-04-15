@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h2 Employee Edit
+  
+
+  form.form(action='/employee/update?id='+data.id,method='post')
+    div(data-role='fieldcontain')
+      fieldset.row(data-role='controlgroup')
+        label(for='name') name
+           input.form-control.mt-2(id='name',type='text',value=''+data.name,placeholder='name',name='name')
+        label(for='email') email
+           input.form-control.mt-2(id='email',type='text',value=''+data.email,placeholder='email',name='email')
+        label(for='phoneNo') phoneNo
+           input.form-control.mt-2(id='phoneNo',type='text',value=''+data.phoneNo,placeholder='phoneNo',name='phoneNo')
+        label(for='designation') designation
+           input.form-control.mt-2(id='designation',type='text',value=''+data.designation,placeholder='designation',name='designation')
+        label(for="dropdown") Choose an option:
+            select#dropdown.form-control.mt-2(name="branchId")
+             each row in branch
+              option(value=row.id) #{row.name}
+        label(for="dropdown1") Choose an Status:
+           select#dropdown1.form-control.mt-2(name="status")
+             option(value='Active') Active
+             option(value='Inactive') Inactive
+
+      input.btn.btn-success.mt-4(type='submit',value='Update',data-transition='fade', data-theme='c')

@@ -1,0 +1,62 @@
+extends layout
+block content 
+
+  head
+    title DataTables Example
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css')
+  body
+
+
+  form.well.mt-5
+    div.d-flex.justify-content-end.align-items-center
+      a.btn.btn-success.mt-4(href="/branch-add")
+        i.fa.fa-plus.me-2
+        | Add
+
+
+  form.well.mt-5
+    table#example.pd-5.table.table-striped.table-hover.table-bordered
+      thead
+        tr
+          th S.no
+          th Name
+          th Action
+      tbody
+        each branch,index in data
+          tr
+            td= index+1
+            td= branch.name
+           
+            td
+              a.btn.btn-primary.me-2(href=`/branch-edit/${branch.id}`)
+                i.fa.fa-edit.edit-icon
+              a.btn.btn-danger(onclick=`myFunction(${branch.id})`)
+                i.fa.fa-trash-alt.delete-icon
+
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+    script(src='https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js')
+    script.
+      $(document).ready(function() {
+       var table = $('#example').DataTable();
+      });
+      function myFunction(id) {
+           let text = "Press a button!\nEither OK or Cancel.";
+        if (confirm(text) == true) {
+          text = "You pressed OK!";
+          $.ajax({
+              url: '/branch/delete?id='+id,
+              method: 'GET',
+              success: function(response) {
+                 location.reload();
+              },
+              error: function(xhr, status, error) {
+                  // Handle any errors
+                 console.log("sucess",response);
+              }
+          });
+        } else {
+           text = "You canceled!";
+        }
+       document.getElementById("demo").innerHTML = text;
+      }

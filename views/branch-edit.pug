@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h2 Branch Edit
+  
+
+  form.form(action='/branch/update?id='+data.id,method='post')
+    div(data-role='fieldcontain')
+      fieldset.row(data-role='controlgroup')
+        label(for='name') name
+           input.form-control.mt-2(id='name',type='text',value=''+data.name,placeholder='name',name='name')
+
+      input.btn.btn-success.mt-4(type='submit',value='Update',data-transition='fade', data-theme='c')

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h2 AssetsCategory Add
+  
+
+  // Add your dashboard content here
+  div
+  form.form(action='/assetsCategory/add',method='post')
+    div(data-role='fieldcontain')
+      fieldset.row(data-role='controlgroup')
+        label(for='name') name
+           input.form-control.mt-2(id='name',type='text',value='',placeholder='name',name='name')
+      input.btn.btn-success.mt-3(type='submit',value='add',data-transition='fade', data-theme='c')

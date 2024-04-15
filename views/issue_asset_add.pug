@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h2 Assets Add
+  
+
+  // Add your dashboard content here
+  div
+  form.form(action='/asset/issue_asset/add?id='+data.id,method='post')
+    div(data-role='fieldcontain')
+      fieldset.row(data-role='controlgroup')
+        label(for="dropdown") Choose an Employee:
+            select#dropdown.form-control.mt-2(name="employeeId")
+             each row in employee
+              option(value=row.id) #{row.name}   
+        label(for="dropdown1") Choose an Status:
+            select#dropdown1.form-control.mt-2(name="status")
+               option(value='Available') Available
+               option(value='Issued') Issued
+               option(value='Return') Return
+               option(value='Obsolete') Obsolete
+        label(for="dropdown2") Choose an Status:
+            select#dropdown2.form-control.mt-2(name="reason")
+               option(value='upgrade') upgrade
+               option(value='repair') repair
+               option(value='resignation') resignation
+               option(value='others') others             
+      input.btn.btn-success.mt-3(type='submit',value='Submit',data-transition='fade', data-theme='c')

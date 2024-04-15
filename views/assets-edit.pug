@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h2 Assets Edit
+  
+
+  form.form(action='/asset/update?id='+data.id,method='post')
+    div(data-role='fieldcontain')
+      fieldset.row(data-role='controlgroup')
+        label(for='make') Make
+           input.form-control.mt-2(id='make',type='text',value=''+data.make,placeholder='Make',name='make')
+        label(for='model') Model
+           input.form-control.mt-2(id='model',type='text',value=''+data.model,placeholder='model',name='model')
+        label(for='value') Value
+           input.form-control.mt-2(id='value',type='text',value=''+data.value,placeholder='value',name='value')
+        label(for="dropdown") Choose an AssetCategory:
+            select#dropdown.form-control.mt-2(name="asset_categoryId")
+             each row in assetCategory
+              option(value=row.id) #{row.name}
+        label(for="dropdown1") Choose an Branch:
+            select#dropdown1.form-control.mt-2(name="branchId")
+             each row in branch
+              option(value=row.id) #{row.name}
+      input.btn.btn-success.mt-4(type='submit',value='Update',data-transition='fade', data-theme='c')

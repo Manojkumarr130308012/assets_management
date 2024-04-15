@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h2 Employee Add
+  
+
+  // Add your dashboard content here
+  div
+  form.form(action='/employee/add',method='post')
+    div(data-role='fieldcontain')
+      fieldset.row(data-role='controlgroup')
+        label(for='name') name
+           input.form-control.mt-2(id='name',type='text',value='',placeholder='name',name='name')
+        label(for='email') email
+           input.form-control.mt-2(id='email',type='text',value='',placeholder='email',name='email')
+        label(for='phoneNo') phoneNo
+           input.form-control.mt-2(id='phoneNo',type='text',value='',placeholder='phoneNo',name='phoneNo')
+        label(for='designation') designation
+           input.form-control.mt-2(id='designation',type='text',value='',placeholder='designation',name='designation')
+        label(for="dropdown") Choose an option:
+            select#dropdown.form-control.mt-2(name="branchId")
+             each row in data
+              option(value=row.id) #{row.name}
+      input.btn.btn-success.mt-3(type='submit',value='Sign Up',data-transition='fade', data-theme='c')
